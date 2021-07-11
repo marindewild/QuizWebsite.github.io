@@ -92,7 +92,7 @@ getNewQuestion = () => {
         localStorage.setItem('mostRecentFuture', future)
 
 
-        return window.location.assign('/home/marindewild/bkb/project/end.html')
+        return window.location.assign('./end.html')
     }
     HealthBarFull.style.width = `${health}%`
     FutureBarFull.style.width = `${future}%`
