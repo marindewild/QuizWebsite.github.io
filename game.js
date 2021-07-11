@@ -145,7 +145,7 @@ choices.forEach(choice => {
           if (++x === random) {
            window.clearInterval(intervalID);
           }
-        }, 10);
+        }, 50);
         getNewQuestion()
     }, 1000)
 })
