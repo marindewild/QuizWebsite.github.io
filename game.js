@@ -21,7 +21,7 @@ let questions = [
     {
         question: "Blijf je op school of ga je werken",
         choice1: 'Ik blijf op school. Ik ontvang een tegemoetkoming van de overheid van €373 per maand. Ik behoud de optie om te gaan studeren',
-        choice2: 'Ik ga werken. Als 18 jarige verdien ik met een voltijds baan €850 per maand. Ik kan alleen werk doen waar geen startkwalificatie voor nodig is. Dit werk is vaak zwaar en dit zal ik elke maand in mijn gezonheid terugzien. Ook kan ik zonder startkwalificatie geen vervolgopleiding doen',
+        choice2: 'Ik ga werken. Als 18 jarige verdien ik met een voltijds baan €850 per maand. Ik kan alleen werk doen waar geen startkwalificatie voor nodig is. Dit werk is vaak zwaar en dit zal ik elke maand in mijn gezondheid terugzien. Ook kan ik zonder startkwalificatie geen vervolgopleiding doen',
         budget1: 373,
         budget2: 850,
         health1: 0,
@@ -31,19 +31,19 @@ let questions = [
     },
     {
         question: "Je laptop is stuk",
-        choice1: 'De laptop heb ik nodig om me te ontwikkelen. Ik koop een nieuwe. Kosten 350 euro',
+        choice1: 'Ik kan niet zonder een laptop. Ik heb hem nodig om te ontspannen en om me te ontwikkelen. Ik koop een nieuwe. Kosten 350 euro',
         choice2: 'Ik heb geen budget voor een nieuwe laptop dus ik zal het even zonder moeten doen. Ik koop geen nieuwe laptop',
         budget1: -350,
         budget2: 0,
         health1: 0,
-        health2: 0,
+        health2: -5,
         future1: 0,
         future2: -20
     },
     {
         question: "Ga je mee uiteten",
-        choice1: 'Ja, sociale contacten onderhouden is belangrijk voor mijn gezondheid en mijn toekomst. kosten: 25 euro',
-        choice2: 'Nee, dat past niet binnen mijn budget',
+        choice1: 'Ja, sociale contacten onderhouden is belangrijk voor mijn gezondheid en mijn toekomst. Kosten: 25 euro',
+        choice2: 'Nee, daar heb ik geen geld voor',
         budget1: -25,
         budget2: 0,
         health1: +5,
@@ -53,8 +53,8 @@ let questions = [
     },
     {
         question: "Je hebt steeds last van buikpijn",
-        choice1: 'De huisarts wil wat testjes doen. Mijn gezondheid is belangrijk dus ik volg het advies van de arts, kosten eigen risico: 385 euro',
-        choice2: 'Ik heb geen budget en tijd om dit nu te laten doen. Ik laat de testen niet doen',
+        choice1: 'De huisarts wil wat testjes doen. Mijn gezondheid is belangrijk dus ik volg het advies van de arts. Kosten eigen risico: 385 euro',
+        choice2: 'Ik heb geen geld om me te laten testen. Ik laat de testen niet doen en hoop dat ik vanzelf beter word',
         budget1: -385,
         budget2: 0,
         health1: 0,
@@ -65,7 +65,7 @@ let questions = [
     {
         question: "Werken op een festival",
         choice1: 'Ik ga dit weekend werken op het festival. Ik verdien 120 euro. Ik heb hierdoor 12 dagen lang geen vrije dag wat niet goed is voor mijn gezondheid',
-        choice2: 'Ik ga niet werken.',
+        choice2: 'Ik ga niet werken',
         budget1: 150,
         budget2: 0,
         health1: -15,
@@ -209,8 +209,8 @@ function getNewDate () {
   }
   if (dayNum == 25 && score < 0) {
       incrementScore(-Math.abs(Math.round(score/10)))
-      incrementHealth(-3)
-      incrementFuture(-3)
+      incrementHealth(-5)
+      incrementFuture(-5)
   }
   const newDate = new Date(year, month, dayNum);
   monthName = newDate.toLocaleString('en-us', { month: 'long' });
