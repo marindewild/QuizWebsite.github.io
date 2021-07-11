@@ -37,8 +37,8 @@ let questions = [
         budget2: 0,
         health1: 0,
         health2: 0,
-        future1: 10,
-        future2: -15
+        future1: 0,
+        future2: -20
     },
     {
         question: "Ga je mee uiteten",
@@ -66,9 +66,9 @@ let questions = [
         question: "Werken op een festival",
         choice1: 'Ik ga dit weekend werken op het festival. Ik verdien 120 euro. Ik heb hierdoor 12 dagen lang geen vrije dag wat niet goed is voor mijn gezondheid',
         choice2: 'Ik ga niet werken.',
-        budget1: 120,
+        budget1: 150,
         budget2: 0,
-        health1: -10,
+        health1: -15,
         health2: 0,
         future1: 0,
         future2: 0
@@ -132,15 +132,20 @@ choices.forEach(choice => {
             future += currentQuestion.future2
             if (questionCounter == 1) {
                 loon += currentQuestion.budget2
-                healthAfbreuk -= 5
+                healthAfbreuk -= 10
             }
             else {
                 incrementScore(currentQuestion.budget2)
             }
         }
-
-        // selectedChoice.parentElement.classList.add(classToApply)
-        // setTimeout(() => selectedChoice.parentElement.classList.remove(classToApply))
+      var random = Math.round(Math.random() * 20 +10)
+      var x = 0;
+      var intervalID = setInterval(function () {
+          handleClick()
+          if (++x === random) {
+           window.clearInterval(intervalID);
+          }
+        }, 10);
         getNewQuestion()
     }, 1000)
 })
@@ -200,7 +205,6 @@ function getNewDate () {
   if (dayNum == 15) {
     incrementScore(loon)
     incrementHealth(healthAfbreuk)
-    console.log(health)
   }
   if (dayNum == 25 && score < 0) {
       incrementScore(Math.round(score/10 * -1))
@@ -237,6 +241,6 @@ function renderPage () {
 
 window.onload = () => {
   renderPage();
-  setInterval(handleClick, 500);
+  setInterval(handleClick, 1000);
 }
 
