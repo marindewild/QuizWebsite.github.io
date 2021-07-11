@@ -151,6 +151,7 @@ choices.forEach(choice => {
 })
 
 incrementScore = num =>  {
+    console.log(num)
     score += num
     scoreText.innerText = `€${score}`
 }
@@ -207,7 +208,7 @@ function getNewDate () {
     incrementHealth(healthAfbreuk)
   }
   if (dayNum == 25 && score < 0) {
-      incrementScore(Math.round(score/10 * -1))
+      incrementScore(-Math.abs(Math.round(score/10)))
       incrementHealth(-3)
       incrementFuture(-3)
   }
